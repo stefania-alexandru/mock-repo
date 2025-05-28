@@ -1,0 +1,23 @@
+# Repo A: .github/workflows/notify-repo-b.yml
+name: Notify Playwright Tests
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  notify-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send dispatch to Playwright Tests
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.REPO_PLAYWRIGHT_PAT }}
+          repository: https://github.com/stefania-alexandru/dalog-automation
+          event-type: run-playwright-tests
+          client-payload: |
+            {
+              "source_repo": "${{ github.repository }}",
+              "pr_number": "${{ github.event.pull_request.number }}",
+              "branch": "${{ github.head_ref }}"
+            }
