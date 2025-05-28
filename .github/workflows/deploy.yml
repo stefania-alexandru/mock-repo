@@ -13,7 +13,7 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.REPO_PLAYWRIGHT_PAT }}
-          repository: https://github.com/stefania-alexandru/dalog-automation
+          repository: stefania-alexandru/dalog-automation
           event-type: run-playwright-tests
           client-payload: |
             {
