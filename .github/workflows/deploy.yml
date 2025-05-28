@@ -1,4 +1,3 @@
-# Repo A: .github/workflows/notify-repo-b.yml
 name: Notify Playwright Tests
 
 on:
